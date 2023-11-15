@@ -2,28 +2,36 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link } from 'react-router-dom';
+import Loader from './Loader';
 
 export default function Index() {
+  let [loader,setLoader]=useState(false);
     const [users,setUesers]= useState([])
 
     const getUsers = async ()=>{
-        const response = await fetch("https://crud-users-gold.vercel.app/users");
-        const data = await response.json();
+        const {data} = await axios.get("https://crud-users-gold.vercel.app/users");
         setUesers(data.users);
+        setLoader(false);
     }
     const deleteUser = async(id)=>{
+      setLoader(true);
       const {data} = await axios.delete(`https://crud-users-gold.vercel.app/users/${id}`);
       if (data.message === "success") {
         toast.success("User deleted successfully"); 
+        setLoader(false);
+        getUsers();
       }
     }
     useEffect( ()=>{
+      setLoader(true)
         getUsers();
     },[])
 
-    useEffect( ()=>{
-      getUsers();
-  },[users])
+    if(loader){
+      return(
+        <Loader/>
+      )
+    }
 
   return (
     <div>

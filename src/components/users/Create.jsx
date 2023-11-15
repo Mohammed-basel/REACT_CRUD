@@ -4,8 +4,10 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Input from "../shared/Input";
 import Uservalidation from "../validation/Uservalidation";
+import Loader from "./Loader";
 
 export default function Create() {
+  let [loader,setLoader]=useState(false);
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState({
@@ -19,29 +21,38 @@ export default function Create() {
     email: "",
     password: "",
   });
+  let [errorBack,setErorrback]= useState('');
   const handleData = (e) => {
-    const { name, value } = e.target;
+    const {name,value} = e.target;
     setUser({ ...user, [name]: value });
   };
 
   const sendData = async (e) => {
     e.preventDefault();
-  
+    setLoader(true);
     if (Object.keys(Uservalidation(user)).length > 0) {
       setErrors(Uservalidation(user));
+      setLoader(false); 
     } else {
-
-        const response = await axios.post("https://crud-users-gold.vercel.app/users/", user);
-        const data = response.data;
-  
+      try {
+        const { data } = await axios.post("https://crud-users-gold.vercel.app/users/", user);
         if (data.message === "success") {
           toast.success("User added successfully");
           navigate("/user/index");
         }
-      
+      } catch (error) {
+        setErorrback(error.response.data.message);
+        setErrors([]);
+      } finally {
+        setLoader(false);
+      }
     }
   };
-
+if(loader){
+  return(
+    <Loader/>
+  )
+}
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
@@ -219,6 +230,8 @@ export default function Create() {
           </div>
         </div>
         <div className="col py-3">
+
+          {errorBack && <p className="text text-danger">{errorBack}</p>}
           <form onSubmit={sendData}>
             <Input
             errors={errors}
