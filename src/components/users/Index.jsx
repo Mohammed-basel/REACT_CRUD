@@ -137,10 +137,10 @@ export default function Index() {
                                                 <td>{user.name}</td>
                                                 <td>{user.email}</td>
                                                 <td>{user.password}</td>
-                                                <td onClick={() => deleteUser(user._id)}><svg xmlns="http://www.w3.org/2000/svg" className='cursor-pointer' x="0px" y="0px" width="30" height="30" viewBox="0 0 48 48">
-<path fill="#F44336" d="M21.5 4.5H26.501V43.5H21.5z" transform="rotate(45.001 24 24)"></path><path fill="#F44336" d="M21.5 4.5H26.5V43.501H21.5z" transform="rotate(135.008 24 24)"></path>
-</svg></td>
-                                                <td><Link to={`/user/${user._id}`}>details</Link></td>
+                                                <td className='btn btn-danger' onClick={() => deleteUser(user._id)}>delete</td>
+                                                <td className='btn btn-info'><Link className='text-decoration-none text-black' to={`/user/${user._id}`}>details</Link></td>
+                                                <td className='btn btn-warning'>
+                                                  <Link className='text-decoration-none text-black' to={`/user/edit/${user._id}`}>edit</Link></td>
                                             </tr>
                                         </React.Fragment>
                                     )
