@@ -13,7 +13,7 @@ export default function App() {
         <Route path='/user/:id' element={<Details/>}/>
         <Route path='/user/create' element={<Create/>}/>
         <Route path='/user/edit/:id' element={<Edit/>}/>
-        <Route path='*' element={<h2>Page Not Found</h2>}/>
+        <Route path='/*' element={<h2>Page Not Found</h2>}/>
 
       </Routes>
       </div>
