@@ -1,9 +1,9 @@
 import React from 'react'
 import { Routes,Route } from 'react-router-dom'
-import Index from './components/users/Index'
-import Create from './components/users/Create'
-import Details from './components/users/Details'
-import Edit from './components/users/Edit'
+import Index from './components/users/Index.jsx'
+import Create from './components/users/Create.jsx'
+import Details from './components/users/Details.jsx'
+import Edit from './components/users/Edit.jsx'
 export default function App() {
   return (
     <div>
