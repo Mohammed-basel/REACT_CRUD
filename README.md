@@ -1,8 +1,13 @@
-# React + Vite
+# React CRUD User Details App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a CRUD (Create, Read, Update, Delete) web application built using React. It's designed to manage and display user details, offering a practical demonstration of handling data within a React application. The app showcases the core functionalities of CRUD operations, making it an ideal project for understanding the dynamics of React in web development.
 
-Currently, two official plugins are available:
+### Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **CRUD Operations:** Allows creation, reading, updating, and deletion of user details.
+- **React Framework:** Built using React, leveraging its components and state management for dynamic user interfaces.
+- **User Details Display:** Efficiently displays user information, offering a clear view and easy management of user data.
+- **Interactive UI:** User-friendly interface, making it easy to navigate and perform data operations.
+
+Explore the live version of the website [here](https://react-crud-3cl5.onrender.com).
+
